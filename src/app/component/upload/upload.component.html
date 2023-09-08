@@ -1,0 +1,27 @@
+<div class="card">
+    <form #form [formGroup]="group" autocomplete="off">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Upload File</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="w3-display-container" style="margin-bottom: 20px;">
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+                    <div class="file-upload">
+                        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                        {{fileName || "Selecione um arquivo para carga"}}
+                    </div>
+                    <div class="result" *ngIf="registros.length > 0">{{registros.length}} registros foram adicionados
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="button" (click)="sendFile(form)"
+                    [disabled]="group.invalid">Enviar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
