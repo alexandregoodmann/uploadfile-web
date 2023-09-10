@@ -18,3 +18,7 @@ export class Regiao {
 export class Compra {
     valor: number[] = [];
 }
+
+export enum RegiaoEnum {
+    SE, S, NE, N
+}

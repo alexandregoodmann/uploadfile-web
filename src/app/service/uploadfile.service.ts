@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { XMLParser } from 'fast-xml-parser';
 import { Observable } from 'rxjs';
-import { Agentes } from '../model/models';
+import { environment } from 'src/environments/environment';
+import { Agentes, RegiaoEnum } from '../model/models';
 
 
 @Injectable({
@@ -35,7 +36,11 @@ export class UploadfileService {
   }
 
   upload(obj: Agentes): Observable<[]> {
-    return this.http.post<[]>('http://localhost:8087/v1/upload', obj, httpOptions);
+    return this.http.post<[]>(`${environment.url}/upload`, obj, httpOptions);
+  }
+
+  findByRegiao(regiao: string): Observable<[]> {
+    return this.http.get<[]>(`${environment.url}/upload/regiao/${regiao}`, httpOptions);
   }
 }
 
